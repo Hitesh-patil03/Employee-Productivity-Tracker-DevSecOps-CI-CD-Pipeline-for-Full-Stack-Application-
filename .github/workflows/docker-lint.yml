@@ -1,0 +1,35 @@
+name: Docker Lint
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Lint Backend Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: backend/Dockerfile
+
+      - name: Lint Frontend Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: frontend/Dockerfile
+
+      - name: Install yamllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yamllint
+
+      - name: Lint docker-compose.yml
+        run: |
+          yamllint docker-compose.yml
+
+      - name: Validate docker-compose
+        run: |
+          docker compose -f docker-compose.yml config
