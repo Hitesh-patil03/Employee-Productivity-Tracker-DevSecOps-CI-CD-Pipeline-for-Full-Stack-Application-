@@ -1,0 +1,19 @@
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+.kpi-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px; position: relative; overflow: hidden;
+}
+.kpi-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--kpi-color, var(--accent)); }
+.kpi-label { font-size: 10px; font-family: var(--mono); color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+.kpi-value { font-size: 26px; font-weight: 700; line-height: 1; margin-bottom: 5px; }
+.kpi-change { font-size: 11px; font-family: var(--mono); }
+.up { color: var(--green); } .dn { color: var(--red); }
+.card-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.card-sub { font-size: 10px; font-family: var(--mono); color: var(--muted); letter-spacing: 1.5px; margin-bottom: 14px; text-transform: uppercase; }
+.dash-charts-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; margin-bottom: 18px; }
+.dash-bottom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.dept-bars { display: flex; flex-direction: column; gap: 12px; }
+.dept-bar-item { }
+.dept-bar-header { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 13px; }
+.dept-bar-name { font-weight: 500; }
+.dept-bar-score { color: var(--muted2); font-size: 12px; }

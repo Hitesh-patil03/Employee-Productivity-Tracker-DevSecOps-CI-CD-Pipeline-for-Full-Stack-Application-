@@ -1,0 +1,48 @@
+.my-tasks-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.mts-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  text-align: center;
+}
+.mts-val { font-size: 24px; font-weight: 700; font-family: var(--mono); margin-bottom: 3px; }
+.mts-lbl { font-size: 11px; color: var(--muted); font-family: var(--mono); letter-spacing: 1px; text-transform: uppercase; }
+
+.my-tasks-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.tasks-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: var(--mono);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tasks-filter-btn:hover { color: var(--text); border-color: var(--border2); }
+.tasks-filter-btn.active { background: var(--accent); color: #06080f; border-color: var(--accent); }
+.filter-count {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.tasks-filter-btn.active .filter-count { background: rgba(0,0,0,0.2); }
+
+.my-tasks-list { display: flex; flex-direction: column; gap: 14px; }

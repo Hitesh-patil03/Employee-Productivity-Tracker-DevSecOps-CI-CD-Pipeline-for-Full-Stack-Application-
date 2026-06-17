@@ -1,0 +1,46 @@
+.admin-tasks-filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.tasks-filter-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 20px; font-size: 12px;
+  font-family: var(--mono); border: 1px solid var(--border);
+  background: transparent; color: var(--muted2); cursor: pointer; transition: all 0.15s;
+}
+.tasks-filter-btn:hover { color: var(--text); border-color: var(--border2); }
+.tasks-filter-btn.active { background: var(--accent); color: #06080f; border-color: var(--accent); }
+.filter-count { background: rgba(0,0,0,0.2); border-radius: 10px; padding: 1px 6px; font-size: 10px; line-height: 1.6; }
+
+.admin-tasks-list { display: flex; flex-direction: column; gap: 12px; }
+.admin-task-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px;
+  display: flex; flex-direction: column; gap: 10px; transition: border-color 0.15s;
+}
+.admin-task-card:hover { border-color: var(--border2); }
+.atc-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.atc-header-left { display: flex; align-items: flex-start; gap: 10px; flex: 1; min-width: 0; }
+.atc-priority-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.atc-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.atc-desc { font-size: 12px; color: var(--muted2); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.atc-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.atc-meta-chip { font-size: 11px; font-family: var(--mono); color: var(--muted2); }
+.atc-assignee { display: flex; align-items: center; gap: 6px; font-size: 12px; margin-left: auto; }
+.atc-progress { }
+.atc-progress-label { font-size: 10px; font-family: var(--mono); color: var(--muted); margin-top: 4px; }
+.atc-actions { display: flex; gap: 8px; padding-top: 6px; border-top: 1px solid var(--border); }
+
+.assign-to-banner {
+  background: var(--gold-dim); border: 1px solid rgba(245,158,11,0.2);
+  border-radius: var(--radius-sm); padding: 10px 14px;
+  font-size: 13px; font-family: var(--mono); margin-bottom: 16px;
+}
+
+.priority-pills { display: flex; gap: 8px; margin-top: 2px; }
+.pri-pill {
+  padding: 6px 16px; border-radius: 20px; font-size: 12px; font-family: var(--mono);
+  border: 1px solid var(--border); background: transparent; color: var(--muted2);
+  cursor: pointer; transition: all 0.15s; text-transform: capitalize;
+}
+.pri-pill:hover { border-color: var(--border2); color: var(--text); }
+.pri-pill-low { background: var(--green-dim); color: var(--green); border-color: var(--green); }
+.pri-pill-med { background: var(--amber-dim); color: var(--amber); border-color: var(--amber); }
+.pri-pill-high { background: var(--red-dim); color: var(--red); border-color: var(--red); }

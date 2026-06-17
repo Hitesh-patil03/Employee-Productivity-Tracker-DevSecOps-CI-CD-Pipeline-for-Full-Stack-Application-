@@ -1,0 +1,46 @@
+.emp-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.emp-count { font-size: 12px; margin-left: auto; }
+.emp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+
+.emp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.15s; }
+.emp-card:hover { border-color: var(--border2); }
+.emp-card-top { display: flex; align-items: center; gap: 12px; }
+.emp-card-info { flex: 1; min-width: 0; }
+.emp-card-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.emp-card-sub { font-size: 11px; color: var(--muted2); font-family: var(--mono); margin-top: 2px; }
+.emp-card-email { font-size: 11px; color: var(--accent); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.emp-card-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.emp-stat { text-align: center; background: var(--surface2); border-radius: var(--radius-sm); padding: 8px 4px; }
+.emp-stat-val { font-size: 15px; font-weight: 700; font-family: var(--mono); }
+.emp-stat-lbl { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.emp-card-actions { display: flex; gap: 6px; }
+.emp-card-actions .btn { flex: 1; justify-content: center; font-size: 11px; }
+
+.new-cred-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.new-cred-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  gap: 12px;
+}
+.new-cred-row:last-child { border-bottom: none; }
+.new-cred-row span { color: var(--muted2); font-size: 12px; flex-shrink: 0; }
+.new-cred-row code { font-family: var(--mono); font-size: 13px; color: var(--accent); word-break: break-all; text-align: right; }
+.new-cred-warning {
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--amber);
+  background: var(--amber-dim);
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  line-height: 1.5;
+}
