@@ -10,9 +10,15 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
 
-      - name: swtup python
+      - name: setup python
         uses: actions/setup-python@v5
 
       - name: install dependencies
         run: pip install -r requirements.txt
+
+      - name: run linter
+        run: flake8 app.py 
+
+      - name: run SAST
+        run: bandit -r app.py
         
