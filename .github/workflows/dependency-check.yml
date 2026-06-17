@@ -1,0 +1,37 @@
+name: dependency scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dependency-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install frontend Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: scan frontend Dependencies
+        run: |
+          cd frontend
+          npm audit --audit-level=high
+
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: scan backend Dependencies
+        run: |
+          cd backend
+          npm audit --audit-level=high
