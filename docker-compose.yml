@@ -1,23 +1,47 @@
+version: '3.8'
+
 services:
+
+  # ── Backend API ──
   backend:
-    image: hiteshpatil989/employee-tracker-backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: produx-backend
     restart: unless-stopped
     ports:
       - "5000:5000"
     environment:
-      MONGODB_URI: ${MONGODB_URI}
-      JWT_SECRET: ${JWT_SECRET}
-      JWT_EXPIRES_IN: "7d"
-      NODE_ENV: "production"
-      FRONTEND_URL: "http://18.209.47.148"
-      PORT: "5000"
+      - MONGODB_URI=mongodb+srv://sunny:Sunnyp123@cluster0.key5wpm.mongodb.net/produx?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=produx_jwt_secret_2024
+      - JWT_EXPIRES_IN=7d
+      - NODE_ENV=production
+      - FRONTEND_URL=http://localhost
+      - PORT=5000
+    networks:
+      - produx-network
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
 
+  # ── Frontend (React + Nginx) ──
   frontend:
-    image: hiteshpatil989/employee-tracker-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: produx-frontend
     restart: unless-stopped
     ports:
       - "80:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    networks:
+      - produx-network
+
+networks:
+  produx-network:
+    driver: bridge
