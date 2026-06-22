@@ -1,0 +1,36 @@
+name: docker image scan 
+
+on:
+  workflow_dispatch:
+
+jobs: 
+  image-scanner:
+    runs-on: ubuntu-latest
+    
+    steps:
+       #use code checkout only when we add trivyignore 
+      # - name: code checkout
+      #   uses: actions/checkout@v4
+
+      - name: login to docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Scan frontend Image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: '${{ vars.DOCKERHUB_USER }}/employee-tracker-frontend:${{ github.sha}}'
+          severity: 'CRITICAL'
+          exit-code: '1'
+
+      - name: Scan Backend Image
+        uses: aquasecurity/trivy-action@0.36.0
+        with:
+          image-ref: '${{ vars.DOCKERHUB_USER }}/employee-tracker-backend:${{ github.sha}}'
+          format: table
+          severity: 'CRITICAL'
+          exit-code: 1
+          
+        
