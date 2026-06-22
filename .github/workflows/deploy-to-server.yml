@@ -18,7 +18,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "🚀 Setting up EC2..."
+            echo "Setting up EC2..."
 
             sudo apt-get update
             sudo apt-get install -y docker.io docker-compose-v2
@@ -43,21 +43,21 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "🚀 Running App..."
+            echo "Running App..."
 
             cd /home/ubuntu/devops
 
-            echo "📥 Pull latest images..."
+            echo "Pull latest images..."
             docker pull ${{ secrets.DOCKER_USERNAME }}/employee-tracker-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/employee-tracker-frontend:latest
 
-            echo "🛑 Stopping old containers..."
+            echo " Stopping old containers..."
             docker compose down
 
-            echo "🚀 Starting new containers..."
+            echo "Starting new containers..."
             docker compose up -d
 
-            echo "🧹 Cleaning unused images..."
+            echo "Cleaning unused images..."
             docker image prune -f
 
-            echo "✅ Deployment completed!"
+            echo "Deployment completed!"
