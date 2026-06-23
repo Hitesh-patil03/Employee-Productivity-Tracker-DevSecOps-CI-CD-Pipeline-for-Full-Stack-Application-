@@ -1,80 +1,168 @@
 # Produx — Employee Productivity Tracker
 
-A full 3-tier web application: React + Node.js/Express + MongoDB.
+A full-stack 3-tier web application built using **React, Node.js/Express, and MongoDB** to monitor and analyze employee productivity.
 
-## Features
-- **Admin**: Create employees, assign credentials, assign tasks with time limits
-- **Employee**: Login with admin-issued credentials, run task timers, track progress
-- **Analytics**: Charts, KPIs, department breakdowns
-- **JWT Auth**: Role-based access control
+---
 
-## Quick Start
+##  Features
 
-### 1. Clone & Install
+* **Admin Panel**
+
+  * Create employees and assign credentials
+  * Assign tasks with deadlines
+  * Monitor productivity metrics
+
+* **Employee Dashboard**
+
+  * Login with admin-provided credentials
+  * Track tasks with timers
+  * View progress and performance
+
+* **Analytics**
+
+  * Interactive charts and KPIs
+  * Department-wise performance insights
+
+* **Authentication**
+
+  * Secure JWT-based authentication
+  * Role-based access control (Admin / Employee)
+
+---
+
+##  Quick Start
+
+### 1. Clone Repository
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/produx-tracker.git
 cd produx-tracker
-
-# Install backend deps
-cd backend && npm install
-
-# Install frontend deps
-cd ../frontend && npm install
 ```
 
-### 2. Configure Environment
+---
+
+### 2. Install Dependencies
+
+```bash
+# Backend
+cd backend
+npm install
+
+# Frontend
+cd ../frontend
+npm install
+```
+
+---
+
+### 3. Configure Environment
+
 ```bash
 cp backend/.env.example backend/.env
-# Edit backend/.env with your MongoDB URI and JWT secret
 ```
 
-### 3. Seed the Database
+Edit `.env` file:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
+
+ **Important:** Never commit `.env` file to GitHub.
+
+---
+
+### 4. Seed Database
+
 ```bash
 cd backend
 npm run seed
 ```
 
-### 4. Run Development
-```bash
-# Terminal 1 — Backend (port 5000)
-cd backend && npm run dev
+---
 
-# Terminal 2 — Frontend (port 3000)
-cd frontend && npm start
+### 5. Run Application
+
+```bash
+# Backend (port 5000)
+cd backend
+npm run dev
+
+# Frontend (port 3000)
+cd frontend
+npm start
 ```
 
-### 5. Login
-- **Admin**: `admin@produx.io` / `Admin@123`
-- **Employees**: Created by admin in the app (admin shares credentials)
+---
 
-## Project Structure
+##  Default Login
+
+* **Admin**
+  Email: `admin@produx.io`
+  Password: `Admin@123`
+
+* **Employees**
+  Created and managed by admin
+
+---
+
+##  Project Structure
+
 ```
 produx-tracker/
 ├── backend/
-│   ├── config/         # DB connection, constants
-│   ├── controllers/    # Route logic
-│   ├── middleware/     # Auth, error handling
-│   ├── models/         # Mongoose schemas
-│   ├── routes/         # Express routers
-│   ├── seed.js         # Database seeder
-│   └── server.js       # Entry point
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── seed.js
+│   └── server.js
 └── frontend/
     └── src/
-        ├── components/ # Reusable UI components
-        │   ├── admin/  # Admin-only components
-        │   ├── employee/ # Employee-only components
-        │   └── shared/ # Shared UI
-        ├── context/    # Auth context
-        ├── hooks/      # Custom hooks
-        ├── pages/      # Route pages
-        ├── styles/     # Global CSS
-        └── utils/      # API client, helpers
+        ├── components/
+        ├── context/
+        ├── hooks/
+        ├── pages/
+        ├── styles/
+        └── utils/
 ```
 
-## Tech Stack
-| Layer | Tech |
-|---|---|
-| Frontend | React 18, React Router v6, Chart.js, Axios |
-| Backend | Node.js, Express.js, JWT, bcryptjs |
-| Database | MongoDB Atlas + Mongoose |
-| Auth | JWT (access token in memory, refresh in httpOnly cookie) |
+---
+
+##  Tech Stack
+
+| Layer    | Technology                              |
+| -------- | --------------------------------------- |
+| Frontend | React 18, React Router, Chart.js, Axios |
+| Backend  | Node.js, Express.js                     |
+| Database | MongoDB Atlas, Mongoose                 |
+| Auth     | JWT, bcryptjs                           |
+
+---
+
+##  Security Notes
+
+* Secrets are managed via `.env` (not committed)
+* Docker and CI/CD pipelines use environment variables
+* Integrated DevSecOps pipeline:
+
+  * Code quality checks
+  * Secret scanning (Gitleaks)
+  * Dependency scanning
+  * Docker image scanning (Trivy)
+
+---
+
+##  Deployment
+
+* Dockerized frontend & backend
+* CI/CD using GitHub Actions
+* Deployed on AWS EC2 using Docker Compose
+
+---
+
+##  Author
+
+Hitesh Patil
+Aspiring DevOps Engineer 
