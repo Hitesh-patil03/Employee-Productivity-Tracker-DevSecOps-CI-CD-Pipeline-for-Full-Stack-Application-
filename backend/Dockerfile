@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files first (better layer caching)
+
 COPY package*.json ./
 
 # Install dependencies
